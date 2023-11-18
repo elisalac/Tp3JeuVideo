@@ -10,7 +10,7 @@ using System;
 
 public class MoveComponent : MonoBehaviour
 {
-   public  GameObject Coin;
+    public GameObject Coin;
     [SerializeField] TextMeshProUGUI texte;
     [SerializeField] float speed = 4;
     [SerializeField] float forceJump = 5;
@@ -52,6 +52,7 @@ public class MoveComponent : MonoBehaviour
             playerAnimator.SetBool("isIdle", false);
             playerAnimator.SetBool("isRunning", false);
             playerAnimator.SetBool("isWalking", true);
+
             direction = new Vector3(direction.x, 0, direction.z);
             direction = direction.normalized;
 
@@ -64,7 +65,7 @@ public class MoveComponent : MonoBehaviour
             }
         }
 
-        if(direction.magnitude <= 0)
+        if (direction.magnitude <= 0)
         {
             playerAnimator.SetBool("isIdle", true);
             playerAnimator.SetBool("isWalking", false);
@@ -73,23 +74,29 @@ public class MoveComponent : MonoBehaviour
 
         if (!character.isGrounded)
         {
-            jump -= transform.up * Time.deltaTime * gravity;
+            jump.y -= Time.deltaTime * gravity;
         }
-        else 
+        else
         {
+            playerAnimator.SetBool("Grounded", true);
+            jump.y = 0;
+
             if (Input.GetButton("Jump"))
             {
-                playerAnimator.SetBool("isJumping", true);
-                playerAnimator.SetBool("isWalking", false);
-                playerAnimator.SetBool("isRunning", false);
-                playerAnimator.SetBool("isIdle", false);
+                playerAnimator.SetBool("Grounded", false);
+
 
                 jump = transform.up * forceJump;
                 jump.y = Mathf.Max(-1, jump.y);
             }
+            else
+            {
+                // Reset the value of jump.y to prevent the character from falling through the ground.
+                jump.y = -0.1f;
+            }
         }
-         character.Move((direction * speed + jump) * Time.deltaTime);
-        
+        character.Move((direction * speed + jump) * Time.deltaTime);
+
     }
 
     //The player can interact with coins on the ground in the main game which will add time (time = score) and will also destroy the coin
@@ -100,6 +107,7 @@ public class MoveComponent : MonoBehaviour
         {
             if (agire)
             {
+                playerAnimator.SetBool("Interact", true);
                 timer.AddTimePoint();
                 texte.enabled = false;
                 Destroy(Coin);
@@ -107,7 +115,4 @@ public class MoveComponent : MonoBehaviour
             }
         }
     }
-
-
-
 }

@@ -23,10 +23,10 @@ public class CameraMovementComponent : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X");
 
         // Rotate the camera around the target based on the mouse movement
-        transform.RotateAround(player.position, Vector3.up, mouseX * rotationSpeed * Time.deltaTime);
+        //transform.RotateAround(player.position, Vector3.up, mouseX * rotationSpeed * Time.deltaTime);
 
         // Calculate the new position of the camera based on the rotation and distance
-        Vector3 newPosition = player.position + (transform.rotation * offset.normalized * distance);
+        Vector3 newPosition = player.position + (offset.normalized * distance);
 
         // Move the camera to the new position
         transform.position = newPosition;
