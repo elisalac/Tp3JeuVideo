@@ -68,10 +68,10 @@
     <Compile Include="Assets\Scripts\ChangeRuntimeComponent.cs" />
     <Compile Include="Assets\Scripts\BallSpikeSpawn.cs" />
     <Compile Include="Assets\Scripts\TimerComponent.cs" />
+    <Compile Include="Assets\Scripts\playerMovement.cs" />
     <Compile Include="Assets\Scripts\NavMesh.cs" />
     <Compile Include="Assets\Scripts\interact.cs" />
     <Compile Include="Assets\Scripts\SceneSwitch.cs" />
-    <Compile Include="Assets\CameraMovementComponent.cs" />
     <Compile Include="Assets\Scripts\TubeSpikeTrapMotion.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -722,9 +722,6 @@
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.ProBuilder.AddOns.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -751,6 +748,9 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AddOns.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder">
       <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.dll</HintPath>
@@ -784,6 +784,12 @@
     </Reference>
     <Reference Include="Unity.EditorCoroutines.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
       <HintPath>Library\ScriptAssemblies\Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>

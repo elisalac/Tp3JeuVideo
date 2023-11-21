@@ -16,10 +16,12 @@ public class MoveComponent : MonoBehaviour
     [SerializeField] float forceJump = 5;
     [SerializeField] float gravity;
     [SerializeField] Animator playerAnimator;
+    [SerializeField] LayerMask groundMask;
     Vector3 jump = new Vector3(0, 0, 0);
     CharacterController character;
     GameObject ObjText;
     TimerComponent timer;
+    bool isGrounded;
 
     //Sets all the components at the start
     private void Start()
@@ -37,6 +39,10 @@ public class MoveComponent : MonoBehaviour
     //Calls all the functions each frame
     void Update()
     {
+        float halfHeight = character.height * 0.5f;
+        var bottomPoint = transform.TransformPoint(character.center - Vector3.up * halfHeight);
+        isGrounded = Physics.CheckSphere(bottomPoint, 0.1f, groundMask);
+
         Moving();
 
         Intéragir(Input.GetButton("E"));
@@ -72,9 +78,9 @@ public class MoveComponent : MonoBehaviour
             playerAnimator.SetBool("isRunning", false);
         }
 
-        if (!character.isGrounded)
+        if (!isGrounded)
         {
-            jump.y -= Time.deltaTime * gravity;
+            jump.y += Time.deltaTime * gravity;
         }
         else
         {
